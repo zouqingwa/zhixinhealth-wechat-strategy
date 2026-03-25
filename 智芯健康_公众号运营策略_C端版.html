@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>智芯健康 · 公众号运营策略（C端聚焦版）</title>
+  <style>
+    :root {
+      --primary: #1a6b5a;
+      --primary-light: #2d9a7e;
+      --primary-ultra-light: #e8f5f1;
+      --accent: #e8734a;
+      --accent-light: #fdf0ea;
+      --text: #1a1a2e;
+      --text-secondary: #5a6270;
+      --text-light: #8892a0;
+      --border: #e2e8f0;
+      --bg: #f7f9fc;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(145deg, #0f4c3a 0%, #1a6b5a 55%, #2d9a7e 100%);
+      padding: 48px 20px 36px;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -60px; left: -30px;
+      width: 160px; height: 160px; border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.9);
+      font-size: 12px; padding: 4px 12px;
+      border-radius: 20px; margin-bottom: 16px; letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: 26px; font-weight: 700; line-height: 1.3;
+      margin-bottom: 8px; letter-spacing: -0.3px;
+    }
+    .hero h1 span { color: #7ee8c8; }
+    .hero-slogan {
+      font-size: 14px; color: rgba(255,255,255,0.7);
+      margin-bottom: 10px; letter-spacing: 1px;
+    }
+    .hero-focus {
+      display: inline-block;
+      background: rgba(232,115,74,0.3);
+      border: 1px solid rgba(232,115,74,0.5);
+      color: #ffc5aa;
+      font-size: 12px; font-weight: 700;
+      padding: 4px 14px; border-radius: 20px;
+      margin-bottom: 24px; letter-spacing: 0.5px;
+    }
+    .hero-meta {
+      display: flex; justify-content: center;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 6px 14px;
+      font-size: 12px; color: rgba(255,255,255,0.85);
+    }
+
+    /* ── Nav ── */
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-tabs {
+      display: flex; overflow-x: auto;
+      padding: 0 12px; gap: 4px; scrollbar-width: none;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      flex-shrink: 0; padding: 12px 14px;
+      font-size: 13px; color: var(--text-secondary);
+      cursor: pointer; border-bottom: 2px solid transparent;
+      white-space: nowrap; transition: all 0.2s; font-weight: 500;
+    }
+    .nav-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    /* ── Layout ── */
+    .container { max-width: 680px; margin: 0 auto; padding: 20px 16px 60px; }
+    .section { margin-bottom: 28px; scroll-margin-top: 52px; }
+    .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .section-num {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--primary); color: white;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .section-title { font-size: 18px; font-weight: 700; color: var(--text); }
+    .subsection-title {
+      font-size: 15px; font-weight: 700; color: var(--text);
+      margin: 16px 0 10px;
+      padding-left: 10px;
+      border-left: 3px solid var(--primary-light);
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 18px; margin-bottom: 12px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+    }
+    .card-title {
+      font-size: 14px; font-weight: 700; color: var(--primary);
+      margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+    }
+    .divider { height: 1px; background: var(--border); margin: 14px 0; }
+    .quote-box {
+      background: linear-gradient(135deg, var(--primary-ultra-light), #f0faf6);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 18px; margin-bottom: 14px;
+      font-size: 15px; font-weight: 600; color: var(--primary); line-height: 1.6;
+    }
+    .insight-box {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 14px 16px; margin-bottom: 12px;
+      font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+    }
+
+    /* ── Persona ── */
+    .persona-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 16px; margin-bottom: 10px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+    }
+    .persona-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .persona-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .persona-name { font-size: 15px; font-weight: 700; color: var(--text); }
+    .persona-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+    .persona-rows { display: flex; flex-direction: column; gap: 6px; }
+    .persona-row { display: flex; gap: 8px; font-size: 13px; }
+    .persona-label {
+      flex-shrink: 0; width: 52px; color: var(--text-light);
+      font-size: 12px; padding-top: 1px;
+    }
+    .persona-value { color: var(--text-secondary); flex: 1; }
+    .persona-journey {
+      margin-top: 10px; padding-top: 10px;
+      border-top: 1px dashed var(--border);
+    }
+    .journey-title { font-size: 12px; color: var(--text-light); font-weight: 600; margin-bottom: 6px; }
+    .journey-steps { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+    .journey-step {
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 10px;
+    }
+    .journey-arrow { font-size: 11px; color: var(--text-light); }
+
+    /* ── Voice grid ── */
+    .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .voice-card {
+      background: var(--white); border-radius: var(--radius-sm);
+      padding: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+    }
+    .voice-icon { font-size: 22px; margin-bottom: 8px; }
+    .voice-label { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .voice-yes { font-size: 12px; color: #059669; margin-bottom: 4px; }
+    .voice-no { font-size: 12px; color: #dc2626; }
+
+    /* ── Rule items ── */
+    .rule-group { margin-bottom: 12px; }
+    .rule-group-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .rule-item {
+      display: flex; gap: 8px; font-size: 13px; color: var(--text-secondary);
+      margin-bottom: 6px; padding: 8px 10px;
+      background: var(--bg); border-radius: var(--radius-sm);
+    }
+
+    /* ── Pillars ── */
+    .pillar-card {
+      background: var(--white); border-radius: var(--radius);
+      margin-bottom: 12px; box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border); overflow: hidden;
+    }
+    .pillar-header { padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+    .pillar-icon { font-size: 22px; }
+    .pillar-meta { flex: 1; }
+    .pillar-name { font-size: 15px; font-weight: 700; }
+    .pillar-pct {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      padding: 2px 8px; border-radius: 10px; margin-left: 6px;
+    }
+    .pillar-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+    .pillar-body { padding: 0 16px 14px; }
+    .pillar-format-item {
+      font-size: 13px; color: var(--text-secondary);
+      padding: 5px 0; border-bottom: 1px dashed var(--border);
+      display: flex; gap: 6px;
+    }
+    .pillar-format-item:last-child { border-bottom: none; }
+    .pillar-formats-title { font-size: 12px; color: var(--text-light); margin-bottom: 6px; font-weight: 600; }
+    .pillar-titles-title { font-size: 12px; color: var(--text-light); margin: 8px 0 6px; font-weight: 600; }
+    .example-title {
+      font-size: 13px; color: var(--primary);
+      padding: 6px 10px; background: var(--primary-ultra-light);
+      border-radius: var(--radius-sm); margin-bottom: 6px;
+    }
+    /* Pillar color themes */
+    .p1 .pillar-header { background: #f0fdf4; }
+    .p1 .pillar-name { color: #065f46; }
+    .p1 .pillar-pct { background: #d1fae5; color: #065f46; }
+    .p2 .pillar-header { background: #eff6ff; }
+    .p2 .pillar-name { color: #1e40af; }
+    .p2 .pillar-pct { background: #dbeafe; color: #1e40af; }
+    .p3 .pillar-header { background: #fff7ed; }
+    .p3 .pillar-name { color: #9a3412; }
+    .p3 .pillar-pct { background: #ffedd5; color: #9a3412; }
+    .p4 .pillar-header { background: #fdf4ff; }
+    .p4 .pillar-name { color: #6b21a8; }
+    .p4 .pillar-pct { background: #f3e8ff; color: #6b21a8; }
+    .p5 .pillar-header { background: #fef9c3; }
+    .p5 .pillar-name { color: #854d0e; }
+    .p5 .pillar-pct { background: #fef08a; color: #854d0e; }
+
+    /* ── Ratio bar ── */
+    .ratio-bar { display: flex; border-radius: 8px; overflow: hidden; height: 10px; margin: 4px 0 14px; }
+    .ratio-seg { transition: width 0.4s; }
+
+    /* ── Calendar ── */
+    .calendar-week {
+      background: var(--white); border-radius: var(--radius);
+      margin-bottom: 10px; box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border); overflow: hidden;
+    }
+    .calendar-week-header {
+      background: var(--primary); color: white;
+      font-size: 13px; font-weight: 700; padding: 10px 14px;
+    }
+    .calendar-days { padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+    .calendar-day { display: flex; gap: 10px; }
+    .cal-day-label {
+      width: 36px; flex-shrink: 0; font-size: 12px; color: white;
+      background: var(--primary-light); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; padding: 4px 0;
+    }
+    .cal-content { flex: 1; font-size: 13px; color: var(--text-secondary); padding: 6px 0; }
+
+    /* ── Season ── */
+    .season-list { display: flex; flex-direction: column; gap: 8px; }
+    .season-item {
+      background: var(--white); border-radius: var(--radius-sm);
+      padding: 12px 14px; border: 1px solid var(--border);
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .season-month { width: 42px; flex-shrink: 0; font-size: 13px; font-weight: 700; color: var(--primary); text-align: center; }
+    .season-info { flex: 1; }
+    .season-node { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .season-topic { font-size: 12px; color: var(--text-secondary); }
+
+    /* ── Menu ── */
+    .menu-structure {
+      background: var(--white); border-radius: var(--radius);
+      padding: 16px; box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border); margin-bottom: 12px;
+    }
+    .menu-group { margin-bottom: 12px; }
+    .menu-group:last-child { margin-bottom: 0; }
+    .menu-group-title {
+      font-size: 14px; font-weight: 700; color: white;
+      padding: 8px 12px; border-radius: var(--radius-sm); margin-bottom: 6px;
+    }
+    .mg-1 { background: var(--primary); }
+    .mg-2 { background: #059669; }
+    .mg-3 { background: var(--accent); }
+    .menu-item {
+      font-size: 13px; color: var(--text-secondary);
+      padding: 5px 0; border-bottom: 1px dashed var(--border);
+      display: flex; align-items: center; gap: 6px; padding-left: 12px;
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item::before { content: '└'; color: var(--text-light); font-size: 12px; }
+
+    /* ── Reply ── */
+    .reply-list { display: flex; flex-direction: column; gap: 8px; }
+    .reply-item {
+      display: flex; gap: 10px; background: var(--white);
+      border-radius: var(--radius-sm); padding: 12px;
+      border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+    }
+    .reply-kw {
+      flex-shrink: 0; background: var(--primary); color: white;
+      font-size: 12px; font-weight: 700; padding: 4px 8px;
+      border-radius: 6px; align-self: flex-start; white-space: nowrap;
+    }
+    .reply-content { font-size: 13px; color: var(--text-secondary); }
+
+    /* ── Welcome ── */
+    .welcome-box {
+      background: linear-gradient(135deg, #0f4c3a, #1a6b5a);
+      border-radius: var(--radius); padding: 20px; color: white;
+    }
+    .welcome-box pre {
+      font-family: inherit; white-space: pre-wrap;
+      font-size: 14px; line-height: 1.8;
+    }
+
+    /* ── Growth phases ── */
+    .phase-list { display: flex; flex-direction: column; gap: 12px; }
+    .phase-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 16px; box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border); border-left: 4px solid;
+    }
+    .phase-1 { border-left-color: var(--accent); }
+    .phase-2 { border-left-color: var(--primary-light); }
+    .phase-3 { border-left-color: #7c3aed; }
+    .phase-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .phase-name { font-size: 14px; font-weight: 700; color: var(--text); }
+    .phase-period {
+      font-size: 12px; color: var(--text-light);
+      background: var(--bg); padding: 3px 8px; border-radius: 10px;
+    }
+    .phase-item {
+      display: flex; gap: 8px; font-size: 13px; color: var(--text-secondary);
+      margin-bottom: 6px; align-items: flex-start;
+    }
+    .phase-item .bullet {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--primary-light); flex-shrink: 0; margin-top: 6px;
+    }
+
+    /* ── KPI table ── */
+    .kpi-table {
+      width: 100%; border-collapse: collapse; background: var(--white);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--border); margin-bottom: 14px;
+    }
+    .kpi-table th {
+      background: var(--primary); color: white;
+      font-size: 12px; font-weight: 700; padding: 10px 12px; text-align: center;
+    }
+    .kpi-table th:first-child { text-align: left; }
+    .kpi-table td {
+      padding: 10px 12px; font-size: 13px;
+      border-bottom: 1px solid var(--border); text-align: center; color: var(--text-secondary);
+    }
+    .kpi-table td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+    .kpi-table tr:last-child td { border-bottom: none; }
+    .kpi-note {
+      font-size: 13px; color: var(--text-secondary);
+      background: var(--accent-light); border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 12px 14px; line-height: 1.6;
+    }
+
+    /* ── Score grid ── */
+    .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .score-card {
+      background: var(--white); border-radius: var(--radius-sm);
+      padding: 14px; box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border); text-align: center;
+    }
+
+    /* ── Compliance ── */
+    .compliance-item {
+      background: var(--white); border-radius: var(--radius-sm);
+      padding: 14px; box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border); display: flex; gap: 12px; margin-bottom: 10px;
+    }
+    .compliance-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: #fee2e2; color: #dc2626;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .compliance-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .compliance-desc { font-size: 13px; color: var(--text-secondary); }
+
+    /* ── Checklist ── */
+    .check-item {
+      display: flex; gap: 10px; font-size: 13px; color: var(--text-secondary);
+      background: var(--white); border-radius: var(--radius-sm);
+      padding: 12px; border: 1px solid var(--border); margin-bottom: 8px;
+    }
+    .check-box {
+      width: 20px; height: 20px; border-radius: 5px;
+      border: 2px solid var(--border); flex-shrink: 0;
+    }
+
+    /* ── Funnel ── */
+    .funnel { display: flex; flex-direction: column; gap: 6px; }
+    .funnel-step {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--white); border-radius: var(--radius-sm);
+      padding: 12px 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+    }
+    .funnel-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: white; flex-shrink: 0;
+    }
+    .funnel-label { font-size: 14px; font-weight: 700; color: var(--text); }
+    .funnel-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+    .funnel-arrow { text-align: center; color: var(--text-light); font-size: 16px; }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--white); border-top: 1px solid var(--border);
+      padding: 24px 20px; text-align: center;
+      color: var(--text-light); font-size: 12px; line-height: 2;
+    }
+    .footer strong { color: var(--primary); }
+
+    /* ── Utils ── */
+    .tag {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 2px 8px; border-radius: 10px; margin: 2px;
+    }
+    strong { color: var(--text); }
+    .text-sm { font-size: 13px; }
+    .text-secondary { color: var(--text-secondary); }
+    .mt-8 { margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">2026 Q2–Q4 运营策略方案 · 修订版</div>
+  <h1>智芯健康<br/><span>微信公众号运营策略</span></h1>
+  <p class="hero-slogan">智芯见康，至心相伴</p>
+  <div class="hero-focus">🎯 C端聚焦版 · 影响用户认知与决策</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">👤 面向普通健康用户</div>
+    <div class="hero-meta-item">📅 首期 9 个月</div>
+    <div class="hero-meta-item">💡 认知 → 信任 → 决策</div>
+  </div>
+</div>
+
+<!-- Nav -->
+<div class="nav-wrap">
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="scrollTo('sec1')">定位</div>
+    <div class="nav-tab" onclick="scrollTo('sec2')">用户画像</div>
+    <div class="nav-tab" onclick="scrollTo('sec3')">品牌之声</div>
+    <div class="nav-tab" onclick="scrollTo('sec4')">内容支柱</div>
+    <div class="nav-tab" onclick="scrollTo('sec5')">发布日历</div>
+    <div class="nav-tab" onclick="scrollTo('sec6')">菜单设计</div>
+    <div class="nav-tab" onclick="scrollTo('sec7')">增长策略</div>
+    <div class="nav-tab" onclick="scrollTo('sec8')">KPI</div>
+    <div class="nav-tab" onclick="scrollTo('sec9')">合规</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 01 战略定位 -->
+  <div class="section" id="sec1">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title">战略定位</div>
+    </div>
+
+    <div class="quote-box">
+      "成为中国普通人身边最可信的 AI 健康管理伙伴——用科技的力量，让每个人都能读懂自己的身体"
+    </div>
+
+    <div class="insight-box">
+      💡 <strong>核心逻辑</strong>：B 端采购决策依赖信任关系和线下接触，公众号影响有限。但 C 端用户的认知和消费决策高度受内容影响——一篇好文章可以让用户从"听说过"变成"想买"，从"观望"变成"主动推荐给家人"。因此，公众号聚焦 C 端，用内容驱动信任，用信任驱动决策。
+    </div>
+
+    <div class="subsection-title">账号核心使命</div>
+    <div class="card">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="rule-item"><span>🧭</span> <span><strong>改变认知</strong>：让用户从"AI 医疗很遥远"变成"这和我日常健康密切相关"</span></div>
+        <div class="rule-item"><span>🤝</span> <span><strong>建立信任</strong>：通过专业内容 + 真实故事，成为用户信赖的健康信息来源</span></div>
+        <div class="rule-item"><span>💡</span> <span><strong>影响决策</strong>：让用户在有健康管理需求时，第一个想到智芯健康</span></div>
+        <div class="rule-item"><span>📢</span> <span><strong>驱动传播</strong>：让满意的用户自发分享，带动身边的家人朋友关注</span></div>
+      </div>
+    </div>
+
+    <div class="subsection-title">与 B 端策略的分工</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div class="card" style="margin-bottom:0;border-top:3px solid var(--primary);">
+        <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px;">📱 公众号 · C 端</div>
+        <div class="text-sm text-secondary" style="line-height:1.8;">内容种草<br/>认知建立<br/>信任积累<br/>消费决策<br/>口碑传播</div>
+      </div>
+      <div class="card" style="margin-bottom:0;border-top:3px solid #6b7280;">
+        <div style="font-size:13px;font-weight:700;color:#6b7280;margin-bottom:8px;">🤝 线下 · B 端</div>
+        <div class="text-sm text-secondary" style="line-height:1.8;">关系维护<br/>方案演示<br/>项目谈判<br/>采购决策<br/>实施落地</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 用户画像 -->
+  <div class="section" id="sec2">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title">C 端用户画像</div>
+    </div>
+
+    <div class="insight-box">
+      聚焦三类核心 C 端用户。他们处于不同的健康关注阶段，需要不同的内容触发，但最终都指向同一个方向：<strong>主动管理自己或家人的健康</strong>。
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-icon" style="background:#fef3c7;">😰</div>
+        <div>
+          <div class="persona-name">健康焦虑者</div>
+          <div class="persona-sub">30–45 岁 · 城市白领 · 亚健康人群</div>
+        </div>
+      </div>
+      <div class="persona-rows">
+        <div class="persona-row"><span class="persona-label">特征</span><span class="persona-value">工作压力大，偶有心悸/疲劳，怀疑自己有问题但不到医院</span></div>
+        <div class="persona-row"><span class="persona-label">痛点</span><span class="persona-value">不知道自己身体状况是否正常，担心错过早期预警</span></div>
+        <div class="persona-row"><span class="persona-label">内容需求</span><span class="persona-value">哪些症状值得警惕？可穿戴设备能帮我发现什么？</span></div>
+        <div class="persona-row"><span class="persona-label">决策触发</span><span class="persona-value">看到类似自己的案例，觉得"我也该买一个备用"</span></div>
+      </div>
+      <div class="persona-journey">
+        <div class="journey-title">内容触达路径</div>
+        <div class="journey-steps">
+          <span class="journey-step" style="background:#fef3c7;color:#92400e;">焦虑触发</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#d1fae5;color:#065f46;">科普文解惑</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#dbeafe;color:#1e40af;">案例共鸣</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#ede9fe;color:#5b21b6;">产品了解</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#fee2e2;color:#991b1b;">购买决策</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-icon" style="background:#dbeafe;">👨‍👩‍👧</div>
+        <div>
+          <div class="persona-name">孝心子女</div>
+          <div class="persona-sub">30–50 岁 · 父母有慢病 · 异地或同城照料</div>
+        </div>
+      </div>
+      <div class="persona-rows">
+        <div class="persona-row"><span class="persona-label">特征</span><span class="persona-value">父母有高血压/心脏病/糖尿病，自己很担心但无法实时照看</span></div>
+        <div class="persona-row"><span class="persona-label">痛点</span><span class="persona-value">父母不爱去医院，想知道有没有在家就能监测的方法</span></div>
+        <div class="persona-row"><span class="persona-label">内容需求</span><span class="persona-value">慢病居家管理指南、可穿戴设备评测、给父母看的科普</span></div>
+        <div class="persona-row"><span class="persona-label">决策触发</span><span class="persona-value">看到"送父母最好的礼物"类内容，情感共鸣后下单</span></div>
+      </div>
+      <div class="persona-journey">
+        <div class="journey-title">内容触达路径</div>
+        <div class="journey-steps">
+          <span class="journey-step" style="background:#dbeafe;color:#1e40af;">担忧触发</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#d1fae5;color:#065f46;">慢病管理指南</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#ffedd5;color:#9a3412;">真实故事</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#ede9fe;color:#5b21b6;">设备评测</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#fee2e2;color:#991b1b;">送礼决策</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-icon" style="background:#d1fae5;">🧓</div>
+        <div>
+          <div class="persona-name">慢病自管者</div>
+          <div class="persona-sub">50–70 岁 · 已确诊慢病 · 主动健康管理</div>
+        </div>
+      </div>
+      <div class="persona-rows">
+        <div class="persona-row"><span class="persona-label">特征</span><span class="persona-value">已确诊高血压/心脏病，积极寻找更好的自我管理方法</span></div>
+        <div class="persona-row"><span class="persona-label">痛点</span><span class="persona-value">每次复诊间隔太长，不知道平时数据是否正常</span></div>
+        <div class="persona-row"><span class="persona-label">内容需求</span><span class="persona-value">病情科普、用药与监测建议、设备使用教程</span></div>
+        <div class="persona-row"><span class="persona-label">决策触发</span><span class="persona-value">医生/权威机构推荐，或看到同病友的使用效果分享</span></div>
+      </div>
+      <div class="persona-journey">
+        <div class="journey-title">内容触达路径</div>
+        <div class="journey-steps">
+          <span class="journey-step" style="background:#d1fae5;color:#065f46;">主动搜索</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#dbeafe;color:#1e40af;">权威科普</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#fef3c7;color:#92400e;">病友故事</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#ffedd5;color:#9a3412;">使用教程</span>
+          <span class="journey-arrow">→</span>
+          <span class="journey-step" style="background:#fee2e2;color:#991b1b;">购买使用</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- C端转化漏斗 -->
+    <div class="subsection-title">C 端内容转化漏斗</div>
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-num" style="background:#2d9a7e;">1</div>
+        <div><div class="funnel-label">认知触达</div><div class="funnel-desc">通过搜索/分享/推荐看到我们的内容</div></div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+      <div class="funnel-step">
+        <div class="funnel-num" style="background:#3b82f6;">2</div>
+        <div><div class="funnel-label">兴趣建立</div><div class="funnel-desc">内容有价值，关注账号</div></div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+      <div class="funnel-step">
+        <div class="funnel-num" style="background:#8b5cf6;">3</div>
+        <div><div class="funnel-label">信任积累</div><div class="funnel-desc">长期阅读，形成品牌认知和信赖感</div></div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+      <div class="funnel-step">
+        <div class="funnel-num" style="background:#f59e0b;">4</div>
+        <div><div class="funnel-label">需求激活</div><div class="funnel-desc">某篇内容触动，产生"我需要这个"的念头</div></div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+      <div class="funnel-step">
+        <div class="funnel-num" style="background:#ef4444;">5</div>
+        <div><div class="funnel-label">行动转化</div><div class="funnel-desc">点击了解产品 / 购买 / 推荐给他人</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 品牌之声 -->
+  <div class="section" id="sec3">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title">品牌之声指南</div>
+    </div>
+
+    <div class="subsection-title">账号人格设定</div>
+    <div class="card">
+      <p class="text-sm" style="margin-bottom:12px;">把这个账号想象成 <strong>你信任的医生朋友</strong>——不是白大褂式的权威，而是那种能用大白话跟你解释检查结果、真正关心你健康的朋友：</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="rule-item"><span>✦</span> <span>说话<strong>有温度</strong>，不冷漠，让人觉得被关心</span></div>
+        <div class="rule-item"><span>✦</span> <span>内容<strong>看得懂</strong>，不堆砌术语，普通人能理解</span></div>
+        <div class="rule-item"><span>✦</span> <span><strong>诚实可信</strong>，不夸大，不贩卖焦虑，敢说"目前还有局限"</span></div>
+        <div class="rule-item"><span>✦</span> <span><strong>实用落地</strong>，每篇内容都要让人读完有所得，有所行动</span></div>
+      </div>
+    </div>
+
+    <div class="subsection-title">C 端品牌之声四维度</div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-icon">🌡️</div>
+        <div class="voice-label">温暖可亲</div>
+        <div class="voice-yes">✅ 用"你"而非"患者"</div>
+        <div class="voice-yes">✅ 关注情感，不只讲数据</div>
+        <div class="voice-no">❌ 冷冰冰的医学报告感</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">📖</div>
+        <div class="voice-label">通俗易懂</div>
+        <div class="voice-yes">✅ 用类比和生活场景解释</div>
+        <div class="voice-yes">✅ 专业术语出现必解释</div>
+        <div class="voice-no">❌ 堆砌学术名词</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🔒</div>
+        <div class="voice-label">专业可信</div>
+        <div class="voice-yes">✅ 数据有来源，说法有依据</div>
+        <div class="voice-yes">✅ 坦承技术局限性</div>
+        <div class="voice-no">❌ 夸大功效，制造恐慌</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">⚡</div>
+        <div class="voice-label">实用落地</div>
+        <div class="voice-yes">✅ 每篇文章有可操作的建议</div>
+        <div class="voice-yes">✅ 结尾有明确行动引导</div>
+        <div class="voice-no">❌ 只说理论，没有操作</div>
+      </div>
+    </div>
+
+    <div class="subsection-title" style="margin-top:16px;">语言风格规范</div>
+    <div class="rule-group">
+      <div class="rule-group-title" style="color:#059669;">✅ 推荐写法</div>
+      <div class="rule-item"><span>💬</span> <span>"你的心脏每天跳 10 万次，它值得被认真对待" （情感共鸣式开头）</span></div>
+      <div class="rule-item"><span>💬</span> <span>"简单说，就是……" / "换句话说……" （专业内容主动翻译）</span></div>
+      <div class="rule-item"><span>💬</span> <span>"数据说明一个问题：……" （用具体数字，不说"很多"）</span></div>
+      <div class="rule-item"><span>💬</span> <span>"有一个真实的故事……" （案例开场，建立代入感）</span></div>
+    </div>
+    <div class="rule-group">
+      <div class="rule-group-title" style="color:#dc2626;">❌ 避免写法</div>
+      <div class="rule-item"><span>🚫</span> <span>"XX 患者" — 改用"高血压人群"或直接用"你"</span></div>
+      <div class="rule-item"><span>🚫</span> <span>"已被权威证明" — 说清楚是哪个研究或机构</span></div>
+      <div class="rule-item"><span>🚫</span> <span>"颠覆性技术" / "革命性突破" — 过度营销腔，C 端会快速划走</span></div>
+      <div class="rule-item"><span>🚫</span> <span>结尾无 CTA — 每篇必须告诉读者"下一步做什么"</span></div>
+    </div>
+  </div>
+
+  <!-- 04 内容支柱 -->
+  <div class="section" id="sec4">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title">内容支柱策略</div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-title">📊 C 端内容比例分配</div>
+      <div class="ratio-bar">
+        <div class="ratio-seg" style="width:35%;background:#2d9a7e;"></div>
+        <div class="ratio-seg" style="width:25%;background:#3b82f6;"></div>
+        <div class="ratio-seg" style="width:20%;background:#e8734a;"></div>
+        <div class="ratio-seg" style="width:12%;background:#8b5cf6;"></div>
+        <div class="ratio-seg" style="width:8%;background:#f59e0b;"></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
+        <span class="tag" style="background:#d1fae5;color:#065f46;">🌿 健康科普 35%</span>
+        <span class="tag" style="background:#dbeafe;color:#1e40af;">📖 使用指南 25%</span>
+        <span class="tag" style="background:#ffedd5;color:#9a3412;">💬 真实故事 20%</span>
+        <span class="tag" style="background:#ede9fe;color:#6b21a8;">❓ 误区破解 12%</span>
+        <span class="tag" style="background:#fef3c7;color:#92400e;">📣 产品内容 8%</span>
+      </div>
+    </div>
+
+    <!-- P1: 健康科普 -->
+    <div class="pillar-card p1">
+      <div class="pillar-header">
+        <span class="pillar-icon">🌿</span>
+        <div class="pillar-meta">
+          <div class="pillar-name">健康科普<span class="pillar-pct">35%</span></div>
+          <div class="pillar-desc">让用户读懂自己的身体，建立健康自主意识</div>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-formats-title">内容方向</div>
+        <div class="pillar-format-item"><span>📌</span> 心血管健康入门：心率、血压、心电图读懂它</div>
+        <div class="pillar-format-item"><span>📌</span> 慢病自我管理：高血压/糖尿病/心脏病日常须知</div>
+        <div class="pillar-format-item"><span>📌</span> 健康数据解读：可穿戴设备显示的数字是什么意思</div>
+        <div class="pillar-format-item"><span>📌</span> 季节/节气健康提醒：心脑血管高发季节注意事项</div>
+        <div class="pillar-titles-title">示例标题</div>
+        <div class="example-title">《心率 95，正常吗？一文彻底搞清楚心率这件事》</div>
+        <div class="example-title">《血压 140/90，什么时候该吃药？医生说了大实话》</div>
+        <div class="example-title">《可穿戴设备测出来的心电图，和医院有什么不同？》</div>
+        <div class="example-title">《冬天是心脑血管疾病高发期，这 5 件事要提前做》</div>
+      </div>
+    </div>
+
+    <!-- P2: 使用指南 -->
+    <div class="pillar-card p2">
+      <div class="pillar-header">
+        <span class="pillar-icon">📖</span>
+        <div class="pillar-meta">
+          <div class="pillar-name">使用指南<span class="pillar-pct">25%</span></div>
+          <div class="pillar-desc">降低使用门槛，让用户真正用好产品</div>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-formats-title">内容方向</div>
+        <div class="pillar-format-item"><span>📌</span> 设备上手教程：图文/视频讲解如何正确佩戴和使用</div>
+        <div class="pillar-format-item"><span>📌</span> 数据解读指南：AI 报告里的各项指标怎么看</div>
+        <div class="pillar-format-item"><span>📌</span> 场景化使用建议：运动中/睡眠中/日常如何监测</div>
+        <div class="pillar-format-item"><span>📌</span> 就诊辅助攻略：如何把监测数据带给医生，怎么沟通</div>
+        <div class="pillar-titles-title">示例标题</div>
+        <div class="example-title">《第一次用心电监测设备？这 3 步先做对》</div>
+        <div class="example-title">《AI 健康报告出来了，这几个红色预警该怎么处理》</div>
+        <div class="example-title">《下次复诊，把这份监测记录带给医生——他会说谢谢你》</div>
+      </div>
+    </div>
+
+    <!-- P3: 真实故事 -->
+    <div class="pillar-card p3">
+      <div class="pillar-header">
+        <span class="pillar-icon">💬</span>
+        <div class="pillar-meta">
+          <div class="pillar-name">真实故事<span class="pillar-pct">20%</span></div>
+          <div class="pillar-desc">用真实案例建立情感连接，激发共鸣与行动</div>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-formats-title">内容方向</div>
+        <div class="pillar-format-item"><span>📌</span> 用户真实使用故事（获授权，脱敏处理）</div>
+        <div class="pillar-format-item"><span>📌</span> "我妈/我爸的故事" 类孝心叙事</div>
+        <div class="pillar-format-item"><span>📌</span> 医生视角：我见过的那些本可以避免的遗憾</div>
+        <div class="pillar-format-item"><span>📌</span> 数据拯救过谁——设备发现问题的真实案例</div>
+        <div class="pillar-titles-title">示例标题</div>
+        <div class="example-title">《我妈说不用看医生，那台设备帮我说服了她》</div>
+        <div class="example-title">《他以为只是心跳快，AI 发现了房颤——好在发现得早》</div>
+        <div class="example-title">《一个 42 岁独居男人和一块智能手表的故事》</div>
+      </div>
+    </div>
+
+    <!-- P4: 误区破解 -->
+    <div class="pillar-card p4">
+      <div class="pillar-header">
+        <span class="pillar-icon">❓</span>
+        <div class="pillar-meta">
+          <div class="pillar-name">误区破解<span class="pillar-pct">12%</span></div>
+          <div class="pillar-desc">消除顾虑，把"我不确定"变成"我明白了"</div>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-formats-title">内容方向</div>
+        <div class="pillar-format-item"><span>📌</span> AI 诊断的常见误解：它能做什么，不能做什么</div>
+        <div class="pillar-format-item"><span>📌</span> 可穿戴设备选购误区：不是越贵越好</div>
+        <div class="pillar-format-item"><span>📌</span> 健康数据的常见误读：偶尔超标不代表有病</div>
+        <div class="pillar-format-item"><span>📌</span> "我年轻不需要监测" 等认知误区正面回应</div>
+        <div class="pillar-titles-title">示例标题</div>
+        <div class="example-title">《"AI 医疗不准"——这个说法对在哪，错在哪》</div>
+        <div class="example-title">《心率偶尔 120，需要去医院吗？真实情况是……》</div>
+        <div class="example-title">《买可穿戴健康设备，这 4 个坑我替你踩过了》</div>
+      </div>
+    </div>
+
+    <!-- P5: 产品内容 -->
+    <div class="pillar-card p5">
+      <div class="pillar-header">
+        <span class="pillar-icon">📣</span>
+        <div class="pillar-meta">
+          <div class="pillar-name">产品内容<span class="pillar-pct">8%</span></div>
+          <div class="pillar-desc">克制且有价值的产品信息，不硬推销</div>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-formats-title">内容方向</div>
+        <div class="pillar-format-item"><span>📌</span> 新产品发布：结合健康场景讲，不只讲参数</div>
+        <div class="pillar-format-item"><span>📌</span> 功能更新介绍：这次更新解决了用户的哪个痛点</div>
+        <div class="pillar-format-item"><span>📌</span> 用户评测汇总：真实反馈，不回避吐槽</div>
+        <div class="pillar-titles-title">核心原则</div>
+        <div class="example-title">产品内容必须回答"这对我的健康有什么用"，否则不发</div>
+        <div class="example-title">每篇产品文章都要有真实场景和用户视角，绝不纯参数罗列</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 发布日历 -->
+  <div class="section" id="sec5">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title">发布策略与编辑日历</div>
+    </div>
+
+    <div class="subsection-title">发布节奏</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+      <div class="card" style="text-align:center;margin-bottom:0;">
+        <div style="font-size:28px;font-weight:800;color:var(--primary);">3次</div>
+        <div style="font-size:12px;color:var(--text-secondary);">每周发布</div>
+      </div>
+      <div class="card" style="text-align:center;margin-bottom:0;">
+        <div style="font-size:16px;font-weight:800;color:var(--primary);">一/三/六</div>
+        <div style="font-size:12px;color:var(--text-secondary);">周一/三/六 晚 8–9点</div>
+      </div>
+      <div class="card" style="text-align:center;margin-bottom:0;">
+        <div style="font-size:16px;font-weight:700;color:var(--primary);">800–1800字</div>
+        <div style="font-size:12px;color:var(--text-secondary);">适合手机阅读</div>
+      </div>
+      <div class="card" style="text-align:center;margin-bottom:0;">
+        <div style="font-size:14px;font-weight:700;color:var(--primary);">配图必须有</div>
+        <div style="font-size:12px;color:var(--text-secondary);">封面图决定打开率</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      💡 C 端用户习惯在 <strong>晚间休闲时段</strong> 刷内容（20:00–22:00 是黄金窗口）。周六上午（09:00–11:00）也是补充发布的好时机。周二/四偏 B 端，C 端读者那天更忙。
+    </div>
+
+    <div class="subsection-title">季节性营销节点</div>
+    <div class="season-list" style="margin-bottom:16px;">
+      <div class="season-item">
+        <div class="season-month">4月</div>
+        <div class="season-info">
+          <div class="season-node">全国爱国卫生月</div>
+          <div class="season-topic">📱 居家健康管理全攻略 · 给父母的健康礼物清单</div>
+        </div>
+      </div>
+      <div class="season-item">
+        <div class="season-month">5月</div>
+        <div class="season-info">
+          <div class="season-node">世界高血压日 (17日) · 母亲节</div>
+          <div class="season-topic">💊 高血压患者饮食+监测指南 · 给妈妈的健康礼物</div>
+        </div>
+      </div>
+      <div class="season-item">
+        <div class="season-month">6月</div>
+        <div class="season-info">
+          <div class="season-node">父亲节</div>
+          <div class="season-topic">❤️ 给爸爸的礼物 · 中年男性心血管风险科普</div>
+        </div>
+      </div>
+      <div class="season-item">
+        <div class="season-month">9月</div>
+        <div class="season-info">
+          <div class="season-node">全国科普日 · 世界心脏日 (29日)</div>
+          <div class="season-topic">🫀 心脏健康专题周 · AI 心电科普系列</div>
+        </div>
+      </div>
+      <div class="season-item">
+        <div class="season-month">10月</div>
+        <div class="season-info">
+          <div class="season-node">重阳节 · 世界卒中日 (29日)</div>
+          <div class="season-topic">👴 老年健康管理 · 脑卒中早期识别与预防</div>
+        </div>
+      </div>
+      <div class="season-item">
+        <div class="season-month">11月</div>
+        <div class="season-info">
+          <div class="season-node">世界糖尿病日 (14日) · 双十一</div>
+          <div class="season-topic">🛒 糖尿病管理指南 · 健康设备选购攻略</div>
+        </div>
+      </div>
+      <div class="season-item">
+        <div class="season-month">12月</div>
+        <div class="season-info">
+          <div class="season-node">冬季心脑血管高发期 · 元旦</div>
+          <div class="season-topic">❄️ 冬季心血管防护指南 · 年度健康自查清单</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-title">首 12 周内容日历</div>
+    <div class="calendar-week">
+      <div class="calendar-week-header">第 1–2 周 · 建立账号基调</div>
+      <div class="calendar-days">
+        <div class="calendar-day"><div class="cal-day-label">W1 一</div><div class="cal-content">📣 账号开篇：我们为什么做这件事（品牌故事）</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W1 三</div><div class="cal-content">🌿 心率 95，正常吗？一文彻底搞清楚心率这件事</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W1 六</div><div class="cal-content">💬 他以为只是心跳快，AI 发现了房颤（真实故事）</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W2 一</div><div class="cal-content">🌿 血压 140/90，什么时候该吃药？医生说了大实话</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W2 三</div><div class="cal-content">📖 第一次用心电监测设备？这 3 步先做对</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W2 六</div><div class="cal-content">❓ "AI 医疗不准"——这个说法对在哪，错在哪</div></div>
+      </div>
+    </div>
+    <div class="calendar-week">
+      <div class="calendar-week-header">第 3–4 周 · 深化健康认知</div>
+      <div class="calendar-days">
+        <div class="calendar-day"><div class="cal-day-label">W3 一</div><div class="cal-content">🌿 可穿戴设备测出的心电图，和医院有什么不同？</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W3 三</div><div class="cal-content">💬 我妈说不用看医生，那台设备帮我说服了她</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W3 六</div><div class="cal-content">🌿 睡眠心率偏高是怎么回事？这 4 个原因你得知道</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W4 一</div><div class="cal-content">📣 世界高血压日专题：2026 年你需要知道的 5 件事</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W4 三</div><div class="cal-content">📖 AI 健康报告出来了，这几个红色预警该怎么处理</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W4 六</div><div class="cal-content">💬 一个 42 岁独居男人和一块智能设备的故事</div></div>
+      </div>
+    </div>
+    <div class="calendar-week">
+      <div class="calendar-week-header">第 5–8 周 · 场景化内容强化</div>
+      <div class="calendar-days">
+        <div class="calendar-day"><div class="cal-day-label">W5 一</div><div class="cal-content">🌿 高血压患者的日常：这 3 件事医生希望你每天做</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W5 六</div><div class="cal-content">💬 母亲节特辑：给妈妈送什么礼物，才算真的关心她</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W6 一</div><div class="cal-content">❓ 买可穿戴健康设备，这 4 个坑我替你踩过了</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W7 三</div><div class="cal-content">📖 下次复诊，把这份监测记录带给医生</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W8 一</div><div class="cal-content">🌿 父亲节前：中年男性最该警惕的 3 个心脏信号</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W8 六</div><div class="cal-content">💬 用户来信：用了三个月，我终于不那么焦虑了</div></div>
+      </div>
+    </div>
+    <div class="calendar-week">
+      <div class="calendar-week-header">第 9–12 周 · 社区互动与口碑建设</div>
+      <div class="calendar-days">
+        <div class="calendar-day"><div class="cal-day-label">W9 一</div><div class="cal-content">❓ 心率偶尔 120，需要去医院吗？真实情况是……</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W10 六</div><div class="cal-content">💬 读者征集：你的可穿戴设备帮你发现过什么？</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W11 一</div><div class="cal-content">🌿 夏天心脏病为什么更危险？医生提醒这 4 件事</div></div>
+        <div class="calendar-day"><div class="cal-day-label">W12 三</div><div class="cal-content">📣 3 个月回顾 + 读者故事合集 + 互动活动</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 菜单设计 -->
+  <div class="section" id="sec6">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-title">菜单架构设计</div>
+    </div>
+
+    <div class="subsection-title">C 端导向三级菜单</div>
+    <div class="menu-structure">
+      <div class="menu-group">
+        <div class="menu-group-title mg-1">健康知识</div>
+        <div class="menu-items">
+          <div class="menu-item">心脏健康科普库</div>
+          <div class="menu-item">慢病管理指南</div>
+          <div class="menu-item">健康数据解读手册</div>
+        </div>
+      </div>
+      <div class="menu-group">
+        <div class="menu-group-title mg-2">我们的产品</div>
+        <div class="menu-items">
+          <div class="menu-item">产品介绍 & 体验</div>
+          <div class="menu-item">使用教程</div>
+          <div class="menu-item">用户真实评价</div>
+        </div>
+      </div>
+      <div class="menu-group">
+        <div class="menu-group-title mg-3">联系 & 服务</div>
+        <div class="menu-items">
+          <div class="menu-item">健康咨询（在线客服）</div>
+          <div class="menu-item">常见问题解答</div>
+          <div class="menu-item">关于智芯健康</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-title">关键词自动回复</div>
+    <div class="reply-list" style="margin-bottom:16px;">
+      <div class="reply-item">
+        <div class="reply-kw">心率 / 心跳</div>
+        <div class="reply-content">推送《心率正常范围完全指南》+ 产品了解入口</div>
+      </div>
+      <div class="reply-item">
+        <div class="reply-kw">高血压 / 血压</div>
+        <div class="reply-content">推送高血压管理指南文章 + 血压监测产品介绍</div>
+      </div>
+      <div class="reply-item">
+        <div class="reply-kw">心电图 / 房颤</div>
+        <div class="reply-content">推送《可穿戴心电图科普》+ 咨询引导</div>
+      </div>
+      <div class="reply-item">
+        <div class="reply-kw">购买 / 价格</div>
+        <div class="reply-content">产品页面链接 + 客服入口 + 常见型号对比</div>
+      </div>
+      <div class="reply-item">
+        <div class="reply-kw">怎么用 / 教程</div>
+        <div class="reply-content">设备上手视频 + 图文教程合集</div>
+      </div>
+      <div class="reply-item">
+        <div class="reply-kw">父母 / 老人</div>
+        <div class="reply-content">推送《给父母的健康礼物指南》+ 适老产品推荐</div>
+      </div>
+    </div>
+
+    <div class="subsection-title">关注自动欢迎语</div>
+    <div class="welcome-box">
+      <pre>👋 你好，欢迎关注【智芯健康】
+
+我们做一件事：
+用 AI 技术，帮你更早、更准地了解自己的身体。
+
+📍 关注后你能找到：
+• 读得懂的心脏健康科普
+• 用得上的可穿戴设备指南
+• 真实用户的使用故事
+
+有任何健康问题或设备疑问，
+直接回复消息告诉我们——
+我们认真看，认真答。
+
+智芯见康，至心相伴 🌿</pre>
+    </div>
+  </div>
+
+  <!-- 07 增长策略 -->
+  <div class="section" id="sec7">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <div class="section-title">C 端增长策略</div>
+    </div>
+
+    <div class="phase-list">
+      <div class="phase-card phase-1">
+        <div class="phase-header">
+          <div class="phase-name">🌱 冷启动 · 建立内容资产</div>
+          <div class="phase-period">0–3 个月</div>
+        </div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>打造 10 篇长青文章</strong>：覆盖高搜索量健康话题（心率/血压/心电图/房颤/慢病管理），这些文章持续带来自然流量</span></div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>设计分享钩子</strong>：每篇文章结尾设置"转发给需要的家人"引导，最大化二次传播</span></div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>用户故事收集</strong>：主动联系早期用户，获取真实使用故事（是最有力的内容素材）</span></div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>产品包装引导</strong>：产品包装/说明书内附二维码，引导用户关注获取使用教程</span></div>
+      </div>
+
+      <div class="phase-card phase-2">
+        <div class="phase-header">
+          <div class="phase-name">📈 成长 · 扩大 C 端触达</div>
+          <div class="phase-period">3–6 个月</div>
+        </div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>微信搜一搜 SEO</strong>：文章标题和正文针对高频搜索词优化（如"心率多少正常"、"血压高了怎么办"）</span></div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>视频号联动</strong>：将科普文章改编为 60 秒短视频，引流回公众号；直播问答建立互动感</span></div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>KOC 合作</strong>：联系健康类小博主（粉丝 1–10 万）做真实使用分享，比广告效果好</span></div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>用户社群</strong>：建立"智芯健康用户群"，沉淀高质量用户，获取产品反馈和内容素材</span></div>
+      </div>
+
+      <div class="phase-card phase-3">
+        <div class="phase-header">
+          <div class="phase-name">🚀 成熟 · 构建口碑飞轮</div>
+          <div class="phase-period">6–9 个月</div>
+        </div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>用户故事专栏</strong>：建立"我和智芯的故事"常态化征集，真实 UGC 是最有力的转化内容</span></div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>健康话题活动</strong>：定期发起互动（如"晒出你的健康数据"），制造用户参与感和传播话题</span></div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>小程序深度整合</strong>：健康数据自测、个性化科普推荐、一键预约咨询，形成内容 + 工具闭环</span></div>
+        <div class="phase-item"><span class="bullet"></span><span><strong>会员内容体系</strong>：为长期订阅用户提供专属内容（深度报告/专家答疑），提升留存</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 KPI -->
+  <div class="section" id="sec8">
+    <div class="section-header">
+      <div class="section-num">08</div>
+      <div class="section-title">KPI 体系</div>
+    </div>
+
+    <div class="subsection-title">阶段性目标</div>
+    <div style="overflow-x:auto;margin-bottom:14px;">
+      <table class="kpi-table">
+        <thead>
+          <tr><th>指标</th><th>3 个月</th><th>6 个月</th><th>9 个月</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>订阅者数</td><td>1,000+</td><td>5,000+</td><td>15,000+</td></tr>
+          <tr><td>篇均阅读量</td><td>300+</td><td>800+</td><td>2,000+</td></tr>
+          <tr><td>打开率</td><td>25%+</td><td>32%+</td><td>38%+</td></tr>
+          <tr><td>文章分享率</td><td>5%+</td><td>8%+</td><td>12%+</td></tr>
+          <tr><td>菜单点击率</td><td>10%+</td><td>18%+</td><td>25%+</td></tr>
+          <tr><td>产品页点击</td><td>2%+</td><td>5%+</td><td>8%+</td></tr>
+          <tr><td>用户咨询量/月</td><td>20条</td><td>80条</td><td>200条</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="kpi-note">
+      💡 <strong>C 端核心指标是分享率</strong>：分享率高意味着内容有"传播价值"，是 C 端内容质量的最重要信号。打开率反映标题吸引力，产品页点击率反映内容转化效率。
+    </div>
+
+    <div class="subsection-title" style="margin-top:16px;">内容质量评分卡</div>
+    <div class="score-grid">
+      <div class="score-card">
+        <div style="font-size:14px;font-weight:700;margin-bottom:4px;">读得懂</div>
+        <div style="font-size:12px;color:var(--text-secondary);">非专业人士能理解并有收获吗？</div>
+      </div>
+      <div class="score-card">
+        <div style="font-size:14px;font-weight:700;margin-bottom:4px;">有共鸣</div>
+        <div style="font-size:12px;color:var(--text-secondary);">能触动读者说"这说的就是我"吗？</div>
+      </div>
+      <div class="score-card">
+        <div style="font-size:14px;font-weight:700;margin-bottom:4px;">想分享</div>
+        <div style="font-size:12px;color:var(--text-secondary);">读完后会转发给家人朋友吗？</div>
+      </div>
+      <div class="score-card">
+        <div style="font-size:14px;font-weight:700;margin-bottom:4px;">有行动</div>
+        <div style="font-size:12px;color:var(--text-secondary);">读完后有明确的下一步行动吗？</div>
+      </div>
+    </div>
+    <div class="kpi-note" style="margin-top:10px;">
+      每维度满分 10 分，共 40 分。<strong>C 端内容"想分享"维度权重最高，至少 8 分才算合格</strong>。
+    </div>
+
+    <div class="subsection-title" style="margin-top:16px;">每月复盘清单</div>
+    <div class="check-item"><div class="check-box"></div><span>分享率 TOP3 文章分析：用户为什么愿意转发？</span></div>
+    <div class="check-item"><div class="check-box"></div><span>取关时间节点分析：哪类内容后流失最多？</span></div>
+    <div class="check-item"><div class="check-box"></div><span>用户评论 & 咨询内容归类：用户最关心什么问题？</span></div>
+    <div class="check-item"><div class="check-box"></div><span>产品页点击来源追踪：哪篇文章转化效率最高？</span></div>
+  </div>
+
+  <!-- 09 合规 -->
+  <div class="section" id="sec9">
+    <div class="section-header">
+      <div class="section-num">09</div>
+      <div class="section-title">C 端合规与注意事项</div>
+    </div>
+
+    <div class="subsection-title">⚠️ 医疗内容红线</div>
+    <div class="compliance-item">
+      <div class="compliance-num">1</div>
+      <div>
+        <div class="compliance-title">不构成医疗建议</div>
+        <div class="compliance-desc">所有内容结尾必须注明"本内容仅供健康参考，具体诊疗请咨询专业医生"，避免被认定为医疗建议</div>
+      </div>
+    </div>
+    <div class="compliance-item">
+      <div class="compliance-num">2</div>
+      <div>
+        <div class="compliance-title">不夸大产品功效</div>
+        <div class="compliance-desc">不使用"治疗"、"治愈"、"根治"等词汇，统一使用"辅助监测"、"健康参考"等表述</div>
+      </div>
+    </div>
+    <div class="compliance-item">
+      <div class="compliance-num">3</div>
+      <div>
+        <div class="compliance-title">不贩卖健康焦虑</div>
+        <div class="compliance-desc">C 端内容禁止使用恐吓式标题（"不看悔一生"、"已经晚了"）；传递的情绪是安心感，而非恐惧感</div>
+      </div>
+    </div>
+    <div class="compliance-item">
+      <div class="compliance-num">4</div>
+      <div>
+        <div class="compliance-title">用户故事严格脱敏</div>
+        <div class="compliance-desc">所有案例需获书面授权，删除姓名/地区/医院等可识别信息，必要时虚构化处理并注明</div>
+      </div>
+    </div>
+    <div class="compliance-item">
+      <div class="compliance-num">5</div>
+      <div>
+        <div class="compliance-title">器械资质同步展示</div>
+        <div class="compliance-desc">涉及产品的内容，在适当位置展示产品注册证编号，增强 C 端购买信心</div>
+      </div>
+    </div>
+
+    <div class="subsection-title" style="margin-top:16px;">💡 C 端运营特别提醒</div>
+    <div class="card">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="rule-item"><span>✦</span> <span><strong>评论区是流量来源</strong>：及时回复评论，好的互动被微信推送到更多人</span></div>
+        <div class="rule-item"><span>✦</span> <span><strong>转发话术很重要</strong>：在文章结尾提供"转发语"（如"发给有高血压的家人"），显著提升分享率</span></div>
+        <div class="rule-item"><span>✦</span> <span><strong>私信要 24 小时内回复</strong>：C 端用户发私信说明兴趣强烈，这是最接近购买的时刻</span></div>
+        <div class="rule-item"><span>✦</span> <span><strong>不要迷信"爆款"</strong>：稳定输出有价值内容 > 偶尔爆款；信任需要时间积累</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div><strong>智芯健康</strong> · 微信公众号运营策略方案（C 端聚焦版）</div>
+  <div>方案修订：2026 年 3 月 · 适用阶段：启动期至成长期</div>
+  <div style="margin-top:8px;color:#aab3bf;">建议每季度复盘更新一次</div>
+</div>
+
+<script>
+  function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+  const sections = ['sec1','sec2','sec3','sec4','sec5','sec6','sec7','sec8','sec9'];
+  const tabs = document.querySelectorAll('.nav-tab');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = sections.indexOf(entry.target.id);
+        if (idx >= 0) {
+          tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+          tabs[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-52px 0px 0px 0px' });
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
+</body>
+</html>
